@@ -1,0 +1,42 @@
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+
+  /* Page & surfaces — warm stone neutrals */
+  --color-ink: #fafaf9;
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #fafaf9;
+  --color-surface-overlay: #f5f5f4;
+  --color-border: #e7e5e4;
+  --color-border-subtle: #f5f5f4;
+
+  /* Text — high contrast for readability */
+  --color-ink-text: #1c1917;
+  --color-muted: #57534e;
+  --color-subtle: #78716c;
+
+  /* Brand — ink charcoal (buttons, nav, structure) */
+  --color-brand: #44403c;
+  --color-brand-strong: #292524;
+  --color-brand-deep: #1c1917;
+  --color-brand-muted: #f5f5f4;
+  --color-on-brand: #ffffff;
+
+  /* Accent — signal amber (wordmark, positive actions, highlights) */
+  --color-accent: #b45309;
+  --color-accent-strong: #92400e;
+  --color-accent-muted: #fffbeb;
+
+  --color-decline: #78716c;
+  --color-decline-strong: #57534e;
+
+  --color-explore: #6366f1;
+  --color-success: #15803d;
+  --color-success-muted: #f0fdf4;
+  --color-danger: #dc2626;
+  --color-danger-muted: #fef2f2;
+
+  --radius-card: 1rem;
+  --radius-button: 0.625rem;
+}

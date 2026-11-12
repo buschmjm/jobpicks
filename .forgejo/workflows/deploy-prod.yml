@@ -1,0 +1,36 @@
+name: deploy-prod
+
+on:
+  push:
+    branches: [production]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: |
+          pip install -e ".[dev]"
+          ./scripts/ci-check.sh
+
+  deploy:
+    needs: [quality]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger homelab prod deploy
+        env:
+          WEBHOOK_URL: ${{ secrets.HOMELAB_DEPLOY_WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.HOMELAB_DEPLOY_WEBHOOK_SECRET }}
+        run: |
+          if [[ -z "${WEBHOOK_URL}" ]]; then
+            echo "HOMELAB_DEPLOY_WEBHOOK_URL not set — skipping remote deploy." >&2
+            exit 1
+          fi
+          curl -sf -X POST "${WEBHOOK_URL}/deploy/job-platform-prod" \
+            -H "Content-Type: application/json" \
+            -H "X-Deploy-Webhook-Secret: ${WEBHOOK_SECRET}" \
+            -d "{\"ref\":\"refs/heads/production\",\"after\":\"${GITHUB_SHA}\"}"

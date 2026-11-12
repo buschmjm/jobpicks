@@ -1,0 +1,56 @@
+name: Android debug APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [cursor/jobpicks-android-0547, main, master]
+    paths:
+      - "android/**"
+      - "web/**"
+      - "capacitor.config.ts"
+      - "package.json"
+
+jobs:
+  debug-apk:
+    runs-on: ubuntu-latest
+    if: hashFiles('android/**') != ''
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd web && npm ci
+
+      - name: Build mobile web + sync
+        env:
+          VITE_MOBILE_BUILD: "true"
+          VITE_APP_STOREFRONT: US
+          VITE_APP_BASE_URL: https://app.willowriverautomation.com/jobpicks
+          VITE_APP_MOUNT_PATH: /jobpicks
+        run: |
+          npm run icons:generate
+          npm run mobile:build:web
+          npx cap sync android
+
+      - name: Assemble debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobpicks-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk

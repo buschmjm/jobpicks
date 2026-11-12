@@ -1,0 +1,80 @@
+{
+  "status": "OK",
+  "request_id": "test-request-001",
+  "parameters": {
+    "query": "platform engineer",
+    "page": 1,
+    "num_pages": 1,
+    "date_posted": "month",
+    "country": "us"
+  },
+  "data": [
+    {
+      "job_id": "js-abc-001",
+      "job_title": "Senior Platform Engineer",
+      "employer_name": "Acme Corp",
+      "job_publisher": "LinkedIn",
+      "job_apply_link": "https://www.linkedin.com/jobs/view/123456",
+      "job_description": "Design Kubernetes platforms and Terraform modules.",
+      "job_is_remote": true,
+      "job_posted_at_datetime_utc": "2026-08-21T00:00:00.000Z",
+      "job_location": "San Francisco, CA",
+      "job_city": "San Francisco",
+      "job_state": "CA",
+      "job_country": "US",
+      "job_latitude": 37.7749,
+      "job_longitude": -122.4194,
+      "job_employment_type": "FULLTIME",
+      "job_min_salary": 140000,
+      "job_max_salary": 170000,
+      "job_salary_period": "YEAR",
+      "job_salary_currency": "USD",
+      "seniority_level": "senior",
+      "required_experience_years": 5,
+      "required_technologies": ["Kubernetes", "Terraform", "Python"],
+      "work_arrangement": "Remote",
+      "job_benefits": ["health_insurance", "401k"],
+      "job_highlights": {
+        "Qualifications": [
+          "5+ years platform engineering experience",
+          "Strong Kubernetes skills"
+        ]
+      }
+    },
+    {
+      "job_id": "js-abc-002",
+      "job_title": "Site Reliability Engineer",
+      "employer_name": "Globex",
+      "job_publisher": "Indeed",
+      "job_apply_link": "https://www.indeed.com/viewjob?jk=xyz",
+      "job_description": "Hybrid SRE role with on-call rotation.",
+      "job_is_remote": null,
+      "job_posted_at_datetime_utc": "2026-08-15T00:00:00.000Z",
+      "job_location": "Chicago, IL",
+      "job_city": "Chicago",
+      "job_state": "IL",
+      "job_country": "US",
+      "job_latitude": 41.8781,
+      "job_longitude": -87.6298,
+      "job_employment_type": "FULLTIME",
+      "job_min_salary": 90000,
+      "job_max_salary": 120000,
+      "job_salary_period": "YEAR",
+      "work_arrangement": "Hybrid"
+    },
+    {
+      "job_id": "js-abc-003",
+      "job_title": "Low Paid Intern",
+      "employer_name": "CheapCo",
+      "job_publisher": "ZipRecruiter",
+      "job_apply_link": "https://www.ziprecruiter.com/jobs/1",
+      "job_description": "Unpaid internship.",
+      "job_is_remote": false,
+      "job_posted_at_datetime_utc": "2026-08-10T00:00:00.000Z",
+      "job_location": "New York, NY",
+      "job_min_salary": 30000,
+      "job_max_salary": 35000,
+      "job_salary_period": "YEAR"
+    }
+  ]
+}

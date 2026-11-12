@@ -1,0 +1,3 @@
+# User-driven search terms: populated from each user's target titles during onboarding.
+# No default niche terms — the corpus grows as users sign up.
+search_terms: []

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <style>{{ css }}</style>
+</head>
+<body class="layout-ats">
+  <div class="print-actions">
+    <button type="button" class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  </div>
+  <div class="resume-wrapper">
+    <header class="resume-header">
+      <h1>{{ header.full_name }}</h1>
+      {% if header.pronouns %}<p class="pronouns">{{ header.pronouns }}</p>{% endif %}
+      {% if header.headline %}<h2>{{ header.headline }}</h2>{% endif %}
+      {% if header.tagline %}<p>{{ header.tagline }}</p>{% endif %}
+      {% if header.contacts %}
+      <div class="contact">
+        {% for c in header.contacts %}
+        {% if c.label != "Pronouns" %}
+        <span>
+          <strong>{{ c.label }}:</strong>
+          {% if c.href %}<a href="{{ c.href }}">{{ c.value }}</a>{% else %}{{ c.value }}{% endif %}
+        </span>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if target and target.title %}
+      <p class="job-scope">Tailored for {{ target.title }}{% if target.company %} at {{ target.company }}{% endif %}</p>
+      {% endif %}
+    </header>
+    <main class="resume-main">
+      <div class="resume-content">
+        {% if summary_paragraphs %}
+        <h4 class="section-title">Professional Summary</h4>
+        {% for p in summary_paragraphs %}
+        <p>{{ p }}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% if roles %}
+        <h4 class="section-title">Experience</h4>
+        {% for role in roles %}
+        <div class="job-block">
+          <p class="job-title">{{ role.title }}</p>
+          {% if role.subtitle %}<p class="job-subtitle">{{ role.subtitle }}</p>{% endif %}
+          {% if role.meta %}<p class="job-meta">{{ role.meta }}</p>{% endif %}
+          {% if role.scope %}<p class="job-scope">{{ role.scope }}</p>{% endif %}
+          {% if role.highlights %}
+          <ul>
+            {% for h in role.highlights %}
+            <li>{{ h.text }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if skill_groups %}
+        <h4 class="section-title">Core Technologies</h4>
+        <ul class="skills-list">
+          {% for group in skill_groups %}
+          <li><strong>{{ group.label }}:</strong> {{ group["items"] | join(', ') }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if projects %}
+        <h4 class="section-title">Selected Projects</h4>
+        <ul>
+          {% for project in projects %}
+          <li><strong>{{ project.name }}:</strong> {{ project.description }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if education %}
+        <h4 class="section-title">Education</h4>
+        {% for edu in education %}
+        <p>
+          {% if edu.degree or edu.field %}
+            {{ [edu.degree, edu.field] | reject('equalto', '') | join(', ') }}
+            {% if edu.institution %} · {% endif %}
+          {% endif %}
+          {% if edu.institution %}{{ edu.institution }}{% endif %}
+          {% if edu.end_date %} · {{ edu.end_date }}{% endif %}
+        </p>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </main>
+  </div>
+</body>
+</html>

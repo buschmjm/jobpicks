@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ingest.yaml
+  - normalize-embed.yaml
+  - score.yaml
+  - queue-topup.yaml
+  - daily-email.yaml
+  - queue-expiry.yaml
+  - source-health.yaml
+  - retention.yaml
+  - geocode-jobs.yaml
+
+commonLabels:
+  app.kubernetes.io/part-of: job-platform
+  app.kubernetes.io/managed-by: kustomize

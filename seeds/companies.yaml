@@ -1,0 +1,92 @@
+# Curated ATS board tokens for nightly board-sweep ingest.
+#
+# Format (one entry per company):
+#   - name: Human-readable company name
+#     greenhouse: board token (if Greenhouse)
+#     lever: site slug (if Lever)
+#     notes: optional context
+
+companies:
+  - name: HashiCorp
+    greenhouse: hashicorp
+    notes: Terraform, Vault, Nomad — platform/SRE roles
+
+  - name: Datadog
+    greenhouse: datadog
+    notes: Observability, SRE, platform engineering
+
+  - name: GitLab
+    greenhouse: gitlab
+    notes: DevOps platform, infrastructure, release engineering
+
+  - name: Cloudflare
+    greenhouse: cloudflare
+    notes: Edge infrastructure, SRE, network engineering
+
+  - name: MongoDB
+    greenhouse: mongodb
+    notes: Database platform, cloud infrastructure
+
+  - name: Confluent
+    greenhouse: confluent
+    notes: Kafka platform, cloud engineering
+
+  - name: Stripe
+    greenhouse: stripe
+    notes: Payments infrastructure, platform reliability
+
+  - name: Elastic
+    lever: elastic
+    notes: Search/observability stack, SRE and DevOps
+
+  - name: Databricks
+    lever: databricks
+    notes: Data platform, infrastructure and DevOps
+
+  - name: Snowflake
+    lever: snowflake
+    notes: Cloud data platform, site reliability
+
+  - name: Airbnb
+    greenhouse: airbnb
+    notes: Verified GH board 2026-09
+
+  - name: Coinbase
+    greenhouse: coinbase
+    notes: Verified GH board 2026-09
+
+  - name: Discord
+    greenhouse: discord
+    notes: Verified GH board 2026-09
+
+  - name: Dropbox
+    greenhouse: dropbox
+    notes: Verified GH board 2026-09
+
+  - name: Figma
+    greenhouse: figma
+    notes: Verified GH board 2026-09
+
+  - name: Instacart
+    greenhouse: instacart
+    notes: Verified GH board 2026-09
+
+  - name: Reddit
+    greenhouse: reddit
+    notes: Verified GH board 2026-09
+
+  - name: Robinhood
+    greenhouse: robinhood
+    notes: Verified GH board 2026-09
+
+  - name: Twilio
+    greenhouse: twilio
+    notes: Verified GH board 2026-09
+
+  - name: Pinterest
+    greenhouse: pinterest
+    notes: Verified GH board 2026-09
+
+  - name: Palantir
+    lever: palantir
+    notes: Verified Lever board 2026-09

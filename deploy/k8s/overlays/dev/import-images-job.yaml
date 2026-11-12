@@ -1,0 +1,40 @@
+# One-shot: import host Docker image into k3s containerd (thenetwork).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-platform-import-image
+  namespace: jobs-platform-dev
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      hostPID: true
+      nodeSelector:
+        kubernetes.io/hostname: thenetwork
+      containers:
+        - name: import
+          image: docker:27-cli
+          securityContext:
+            privileged: true
+          env:
+            - name: IMAGE
+              value: job-platform:dev
+          command:
+            - sh
+            - -c
+            - |
+              set -eu
+              echo "Importing ${IMAGE} into k3s..."
+              nsenter -t 1 -m -u -i -n -- sh -c \
+                "docker save '${IMAGE}' | /usr/local/bin/k3s ctr -n k8s.io images import -"
+              echo "Import complete."
+          volumeMounts:
+            - name: docker-sock
+              mountPath: /var/run/docker.sock
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+            type: Socket

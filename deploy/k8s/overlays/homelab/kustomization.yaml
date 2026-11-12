@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+  # import-images-job.yaml is applied separately by deploy-on-server.sh
+  # (Jobs have immutable pod templates; apply -k cannot patch them).
+
+# Prod overlay (thenetwork k3s, namespace jobs-platform).
+# Secrets: deploy/scripts/init-homelab-secrets.sh --env prod
+# Ingress: app.willowriverautomation.com + jobs.jbuschmann.com via homelab-infra cloudflared.
+
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent
+
+images:
+  - name: job-platform
+    newName: job-platform
+    newTag: latest

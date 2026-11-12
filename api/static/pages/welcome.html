@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobPicks — AI job matches picked for your profile</title>
+  <meta name="description" content="JobPicks ranks jobs for your skills and goals. Swipe a personalized deck, get AI career advice, and prepare applications with confidence. Free to start.">
+  <meta name="keywords" content="job search, AI job match, personalized jobs, resume builder, career advisor, swipe jobs, jobs for me, job application">
+  <meta property="og:title" content="JobPicks — AI job matches picked for you">
+  <meta property="og:description" content="Swipe ranked job matches, chat with an AI career advisor, and build tailored resumes. Human-in-the-loop — you stay in control of every application.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jobs.jbuschmann.com/welcome">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --subtle: #78716c;
+      --canvas: #ffffff;
+      --surface: #fafaf9;
+      --border: #e7e5e4;
+      --accent: #b45309;
+      --accent-strong: #92400e;
+      --brand: #292524;
+      --success: #15803d;
+      --radius: 1rem;
+      --shadow: 0 24px 60px rgba(28, 25, 23, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(180, 83, 9, 0.08), transparent),
+        linear-gradient(180deg, #fafaf9 0%, #ffffff 40%);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-strong); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .logo svg { flex-shrink: 0; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-radius: 0.625rem;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--ink); text-decoration: none; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 2rem 0 4rem;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 1.05fr 0.95fr; padding: 3rem 0 5rem; }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: #fffbeb;
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.08;
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin: 0 0 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0.625rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--ink); text-decoration: none; }
+    .btn-secondary {
+      background: var(--canvas);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface); text-decoration: none; }
+
+    .hero-note { font-size: 0.85rem; color: var(--subtle); }
+
+    /* Phone mockups */
+    .phones {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .phone {
+      width: 220px;
+      border-radius: 2rem;
+      background: var(--ink);
+      padding: 0.65rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .phone:nth-child(1) { transform: rotate(-6deg) translateY(24px); z-index: 1; }
+    .phone:nth-child(2) { transform: translateY(0); z-index: 3; width: 240px; }
+    .phone:nth-child(3) { transform: rotate(6deg) translateY(32px); z-index: 2; }
+
+    @media (max-width: 760px) {
+      .phones { flex-direction: column; align-items: center; min-height: auto; }
+      .phone, .phone:nth-child(1), .phone:nth-child(2), .phone:nth-child(3) {
+        transform: none; width: min(280px, 100%);
+      }
+      .phone:nth-child(2) { order: -1; }
+      .phone:nth-child(1), .phone:nth-child(3) { display: none; }
+    }
+
+    .phone-screen {
+      border-radius: 1.5rem;
+      background: var(--surface);
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-notch {
+      height: 1.5rem;
+      background: var(--surface);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 0.25rem;
+    }
+    .phone-notch span {
+      width: 4rem;
+      height: 0.35rem;
+      border-radius: 999px;
+      background: #d6d3d1;
+    }
+
+    .screen-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--subtle);
+      padding: 0.35rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Deck mock */
+    .deck-card {
+      margin: 0.5rem 0.75rem 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 0.75rem;
+      flex: 1;
+    }
+    .match-pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--success);
+      background: #f0fdf4;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+    .deck-card h3 { margin: 0 0 0.25rem; font-size: 0.95rem; }
+    .deck-card p { margin: 0; font-size: 0.75rem; color: var(--muted); }
+    .deck-meta { margin-top: 0.5rem; font-size: 0.7rem; color: var(--subtle); }
+    .deck-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.75rem;
+    }
+    .deck-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      background: #fff;
+    }
+    .deck-btn.like { color: var(--accent); border-color: #fcd34d; background: #fffbeb; }
+
+    /* Advisor mock */
+    .chat {
+      padding: 0.5rem 0.75rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    .bubble {
+      max-width: 88%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.85rem;
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+    .bubble.user {
+      align-self: flex-end;
+      background: var(--brand);
+      color: #fff;
+      border-bottom-right-radius: 0.2rem;
+    }
+    .bubble.ai {
+      align-self: flex-start;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 0.2rem;
+    }
+    .chat-input {
+      margin: 0 0.75rem 0.75rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.65rem;
+      border: 1px solid var(--border);
+      font-size: 0.7rem;
+      color: var(--subtle);
+      background: #fff;
+    }
+
+    /* Resume mock */
+    .resume-preview {
+      margin: 0.5rem 0.75rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 0.65rem;
+      padding: 0.65rem;
+      flex: 1;
+      font-size: 0.68rem;
+    }
+    .resume-preview h4 { margin: 0 0 0.35rem; font-size: 0.8rem; }
+    .resume-line {
+      height: 0.35rem;
+      background: #e7e5e4;
+      border-radius: 999px;
+      margin-bottom: 0.35rem;
+    }
+    .resume-line.accent { background: #fcd34d; width: 70%; }
+    .resume-line.short { width: 55%; }
+
+    section { padding: 3.5rem 0; }
+    section h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin: 0 0 0.5rem;
+      text-align: center;
+    }
+    .section-lead {
+      text-align: center;
+      color: var(--muted);
+      max-width: 40rem;
+      margin: 0 auto 2.5rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .feature-card {
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .feature-card h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .feature-card p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+    .feature-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.65rem;
+      background: #fffbeb;
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      counter-reset: step;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      position: relative;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      width: 1.75rem;
+      height: 1.75rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .step h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      background: var(--canvas);
+    }
+    .price-card.featured {
+      border-color: #fcd34d;
+      box-shadow: 0 12px 40px rgba(180, 83, 9, 0.1);
+    }
+    .price-card h3 { margin: 0; font-size: 1.1rem; }
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      font-family: "Instrument Serif", Georgia, serif;
+    }
+    .price small { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    .price-card ul {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .price-card li { margin-bottom: 0.35rem; }
+
+    .faq {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq details {
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.65rem;
+      background: var(--canvas);
+    }
+    .faq summary {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .faq p { margin: 0.65rem 0 0; color: var(--muted); font-size: 0.92rem; }
+
+    .cta-band {
+      margin: 2rem 0 0;
+      padding: 2.5rem 1.5rem;
+      border-radius: 1.25rem;
+      background: var(--brand);
+      color: #fff;
+      text-align: center;
+    }
+    .cta-band h2 { color: #fff; margin-bottom: 0.5rem; }
+    .cta-band p { color: #d6d3d1; margin: 0 auto 1.25rem; max-width: 32rem; }
+    .cta-band .btn-primary { background: #fff; color: var(--brand); }
+    .cta-band .btn-primary:hover { background: #fafaf9; }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--subtle);
+      font-size: 0.85rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--muted); margin: 0 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="/welcome" aria-label="JobPicks home">
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="8" y="10" width="28" height="20" rx="4" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1.5"/>
+          <rect x="12" y="16" width="28" height="20" rx="4" fill="#ffffff" stroke="#292524" stroke-width="1.5"/>
+          <rect x="16" y="22" width="28" height="20" rx="4" fill="#f5f5f4" stroke="#e7e5e4" stroke-width="1.5"/>
+          <path d="M16 28h20" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 33h14" stroke="#a8a29e" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Job<span>Picks</span>
+      </a>
+      <a class="nav-cta" href="/login">Get started free</a>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <span class="eyebrow">AI job search · Human in control</span>
+        <h1 id="hero-title">Jobs picked for your profile, not the other way around.</h1>
+        <p class="hero-lead">
+          JobPicks ranks roles against your skills and goals. Swipe a personalized deck,
+          get AI career guidance, and prepare stronger applications — without spamming
+          employers or auto-applying behind your back.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/login">Create free account</a>
+          <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+        </div>
+        <p class="hero-note">Free plan includes daily matches, AI advisor, and resume tools. Upgrade to Pro when you need more.</p>
+      </div>
+
+      <div class="phones" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"><span></span></div>
+            <div class="screen-label">Career advisor</div>
+            <div class="chat">
+              <div class="bubble user">Should I pivot to platform engineering?</div>
+              <div class="bubble ai">Your SRE background maps well. Three roles in your deck this week target platform teams with on-call rotation you already handle.</div>
+            </div>
+            <div class="chat-input">Ask your advisor…</div>
+          </div>
+        </div>
+
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"><span></span></div>
+            <div class="screen-label">Swipe deck</div>
+            <div class="deck-card">
+              <span class="match-pill">92% match</span>
+              <h3>Senior Platform Engineer</h3>
+              <p>Remote · Series B fintech</p>
+              <p class="deck-meta">Kubernetes, Terraform, on-call — matches your confirmed skills</p>
+            </div>
+            <div class="deck-actions">
+              <div class="deck-btn">✕</div>
+              <div class="deck-btn like">♥</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"><span></span></div>
+            <div class="screen-label">Resume builder</div>
+            <div class="resume-preview">
+              <h4>Tailored for this role</h4>
+              <div class="resume-line accent"></div>
+              <div class="resume-line"></div>
+              <div class="resume-line short"></div>
+              <div class="resume-line"></div>
+              <div class="resume-line short"></div>
+            </div>
+            <div class="chat" style="padding-top:0">
+              <div class="bubble ai">Moved your platform migration bullet to the top and added the JD keywords you were missing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" aria-labelledby="features-title">
+      <h2 id="features-title">Built for serious job seekers</h2>
+      <p class="section-lead">Less noise, more signal. JobPicks learns from how you swipe, save, and apply — so tomorrow's picks get sharper.</p>
+      <div class="features">
+        <article class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Ranked swipe deck</h3>
+          <p>See match scores and why a role fits before you spend time on an application.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>AI career advisor</h3>
+          <p>Ask about pivots, compensation, and interview prep — grounded in your profile and current market research.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <h3>Resume builder</h3>
+          <p>Chat to refine bullets, reorder experience, and tailor your resume for each role you care about.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">✅</div>
+          <h3>Apply to-do list</h3>
+          <p>Right-swipes become a focused queue. Prepare packets, cover letters, and answers — you submit when ready.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>You stay in control</h3>
+          <p>No unattended auto-apply. JobPicks assists; you review every application before it goes out.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Gets smarter over time</h3>
+          <p>Pass reasons and preferences shape future picks — not just keyword matching on day one.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-it-works" aria-labelledby="steps-title">
+      <h2 id="steps-title">How JobPicks works</h2>
+      <p class="section-lead">From upload to interview-ready in three focused steps.</p>
+      <div class="steps">
+        <article class="step">
+          <h3>Upload your resume</h3>
+          <p>We parse your experience and confirm what matters — skills, seniority, location, and goals.</p>
+        </article>
+        <article class="step">
+          <h3>Swipe your picks</h3>
+          <p>Review ranked matches daily. Save roles you want, pass on the rest, and tell us why.</p>
+        </article>
+        <article class="step">
+          <h3>Apply with intent</h3>
+          <p>Use the advisor and resume tools to prepare. Add finished applications from your to-do list.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" aria-labelledby="pricing-title">
+      <h2 id="pricing-title">Simple pricing</h2>
+      <p class="section-lead">Start free. Upgrade when you're in active search mode and need higher daily limits.</p>
+      <div class="pricing">
+        <article class="price-card">
+          <h3>Free</h3>
+          <p class="price">$0 <small>/ forever</small></p>
+          <ul>
+            <li>10 deck matches per day</li>
+            <li>5 AI advisor messages per day</li>
+            <li>3 resume builder messages per day</li>
+            <li>2 lifetime application packets</li>
+          </ul>
+        </article>
+        <article class="price-card featured">
+          <h3>Pro</h3>
+          <p class="price">$9.99–14.99 <small>/ month</small></p>
+          <ul>
+            <li>25 deck matches per day</li>
+            <li>Unlimited advisor &amp; resume builder</li>
+            <li>Full match explanations &amp; score breakdown</li>
+            <li>Unlimited application packets</li>
+            <li>Intraday job alerts</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Does JobPicks apply to jobs for me?</summary>
+          <p>No. JobPicks helps you find, evaluate, and prepare applications. You review and submit every application yourself.</p>
+        </details>
+        <details>
+          <summary>Where do job listings come from?</summary>
+          <p>We aggregate listings from legitimate job APIs and employer sources. Listings can be stale or incomplete — always verify on the employer's site.</p>
+        </details>
+        <details>
+          <summary>Is my resume used to train public AI models?</summary>
+          <p>No. Your resume is used to match jobs and power AI features for your account. See our <a href="/privacy">Privacy Policy</a> for details.</p>
+        </details>
+        <details>
+          <summary>Who is JobPicks for?</summary>
+          <p>US-based job seekers who want fewer, better-matched roles — especially in tech and knowledge work — without application spam.</p>
+        </details>
+      </div>
+
+      <div class="cta-band">
+        <h2>Ready for better job picks?</h2>
+        <p>Create a free account and see your first ranked matches in minutes.</p>
+        <a class="btn btn-primary" href="/login">Get started free</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Willow River Automation · JobPicks</p>
+      <p>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:privacy@jbuschmann.com">Contact</a>
+      </p>
+      <p style="margin-top:0.75rem">Also available on the web at <a href="https://jobs.jbuschmann.com">jobs.jbuschmann.com</a></p>
+    </footer>
+  </div>
+</body>
+</html>

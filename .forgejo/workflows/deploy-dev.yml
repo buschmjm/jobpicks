@@ -1,0 +1,25 @@
+name: deploy-dev
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Trigger homelab dev deploy
+        env:
+          WEBHOOK_URL: ${{ secrets.HOMELAB_DEPLOY_WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.HOMELAB_DEPLOY_WEBHOOK_SECRET }}
+        run: |
+          if [[ -z "${WEBHOOK_URL}" ]]; then
+            echo "HOMELAB_DEPLOY_WEBHOOK_URL not set — skipping remote deploy."
+            echo "Configure Forgejo repo secrets or run deploy manually on thenetwork."
+            exit 0
+          fi
+          curl -sf -X POST "${WEBHOOK_URL}/deploy/job-platform-dev" \
+            -H "Content-Type: application/json" \
+            -H "X-Deploy-Webhook-Secret: ${WEBHOOK_SECRET}" \
+            -d "{\"ref\":\"refs/heads/main\",\"after\":\"${GITHUB_SHA}\"}"

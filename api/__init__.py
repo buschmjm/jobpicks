@@ -1,0 +1,1 @@
+"""Job platform FastAPI application."""

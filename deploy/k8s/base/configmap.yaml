@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-platform-config
+  namespace: jobs-platform
+  labels:
+    app.kubernetes.io/name: job-platform
+    app.kubernetes.io/component: config
+data:
+  APP_ENV: "production"
+  APP_BASE_URL: "https://app.willowriverautomation.com/jobpicks"
+  APP_MOUNT_PATH: "/jobpicks"
+  APP_ALT_BASE_URLS: "https://jobs.jbuschmann.com"
+  OLLAMA_BASE_URL: "http://localhost:11434/v1"
+  LOG_LEVEL: "info"
+  RESUME_STORAGE_DIR: "/data/resumes"
+  EMAIL_BACKEND: "smtp"
+  AUTH_BACKEND: "keycloak"
+  KEYCLOAK_URL: "https://auth.jbuschmann.com"
+  KEYCLOAK_INTERNAL_URL: "http://keycloak.keycloak.svc.cluster.local"
+  KEYCLOAK_REALM: "homelab"
+  KEYCLOAK_CLIENT_ID: "job-platform"
+  # Chat/advisor: use a mid-size instruct model. qwen3-coder:30b is too slow for
+  # interactive chat and often ignores the JSON schema (probe kills follow).
+  OLLAMA_CHAT_MODEL: "qwen3:4b"
+  OLLAMA_NUM_PARALLEL: "1"
+  INTERACTIVE_NUM_CTX: "4096"
+  INTERACTIVE_TEMPERATURE: "0.3"
+  OLLAMA_KEEP_ALIVE: "30m"
+  ADVISOR_NUM_PREDICT: "512"
+  BUILDER_NUM_PREDICT: "1024"
+  ADVISOR_RATE_LIMIT_PER_MIN: "10"
+  BUILDER_RATE_LIMIT_PER_MIN: "6"
+  ADVISOR_FIFO_BUSY_DEPTH: "3"
+  INFERENCE_TIMEOUT_SECONDS: "300"
+  ADVISOR_REPLY_MAX_CHARS: "8000"
+  ADVISOR_REPLY_MAX_TOKENS: "2000"
+  APPLY_ASSIST_REPLY_MAX_CHARS: "8000"
+  APPLY_ASSIST_REPLY_MAX_TOKENS: "1200"
+  SEARXNG_BASE_URL: "http://searxng.searxng.svc.cluster.local:8080"
+  ADVISOR_RESEARCH_ENABLED: "true"
+  NORMALIZE_BATCH_SIZE: "50"
+  EMBED_BATCH_SIZE: "200"
+  REQUIRE_JOBS_ROLE: "true"
+  EXTERNAL_CHECKOUT_STOREFRONTS: "US"
+  APPLE_BUNDLE_ID: "com.jbuschmann.jobpicks"
+  ANDROID_PACKAGE: "com.jbuschmann.jobpicks"
+  # Set before App Store / Play submission:
+  # APPLE_TEAM_ID: ""
+  # ANDROID_SHA256_CERT_FINGERPRINT: ""

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  namespace: jobs-platform
+  labels:
+    app.kubernetes.io/name: job-platform
+    app.kubernetes.io/component: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: job-platform
+      app.kubernetes.io/component: worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: job-platform
+        app.kubernetes.io/component: worker
+    spec:
+      containers:
+        - name: worker
+          image: job-platform:latest
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-m", "workers", "consumer"]
+          envFrom:
+            - configMapRef:
+                name: job-platform-config
+            - secretRef:
+                name: job-platform-secrets
+          volumeMounts:
+            - name: resumes
+              mountPath: /data/resumes
+          resources:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+      volumes:
+        - name: resumes
+          persistentVolumeClaim:
+            claimName: job-platform-resumes

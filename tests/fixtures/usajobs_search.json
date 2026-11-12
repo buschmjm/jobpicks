@@ -1,0 +1,76 @@
+{
+  "LanguageCode": "EN",
+  "SearchParameters": {
+    "Keyword": "DevOps",
+    "LocationName": "Remote"
+  },
+  "SearchResult": {
+    "SearchResultCount": 1,
+    "SearchResultCountAll": 42,
+    "SearchResultItems": [
+      {
+        "MatchedObjectId": "abc123",
+        "MatchedObjectDescriptor": {
+          "PositionID": "800123400",
+          "PositionTitle": "DevOps Engineer",
+          "OrganizationName": "Department of Veterans Affairs",
+          "PublicationStartDate": "2026-08-18",
+          "PositionURI": "https://www.usajobs.gov/GetJob/ViewDetails/800123400",
+          "ApplyURI": ["https://www.usajobs.gov/GetJob/Apply/800123400"],
+          "PositionLocation": [
+            {
+              "LocationName": "Remote",
+              "CountryCode": "United States"
+            }
+          ],
+          "PositionSchedule": [
+            {
+              "Name": "Full-time",
+              "Code": "1"
+            }
+          ],
+          "PositionRemuneration": [
+            {
+              "MinimumRange": "95000",
+              "MaximumRange": "130000",
+              "RateIntervalCode": "PA"
+            }
+          ],
+          "QualificationSummary": "Experience with Kubernetes, CI/CD pipelines, and cloud infrastructure.",
+          "UserArea": {
+            "Details": {
+              "TeleworkEligible": "Yes",
+              "MajorDuties": [
+                "Manage CI/CD pipelines and cloud infrastructure."
+              ]
+            }
+          }
+        }
+      },
+      {
+        "MatchedObjectId": "def456",
+        "MatchedObjectDescriptor": {
+          "PositionID": "800123401",
+          "PositionTitle": "Administrative Assistant",
+          "OrganizationName": "General Services Administration",
+          "PublicationStartDate": "2026-04-01",
+          "PositionURI": "https://www.usajobs.gov/GetJob/ViewDetails/800123401",
+          "ApplyURI": ["https://www.usajobs.gov/GetJob/Apply/800123401"],
+          "PositionLocation": [
+            {
+              "LocationName": "Washington, DC",
+              "CountryCode": "United States"
+            }
+          ],
+          "PositionSchedule": [
+            {
+              "Name": "Full-time",
+              "Code": "1"
+            }
+          ],
+          "QualificationSummary": "Clerical and scheduling support."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin — Job Platform</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #111; }
+    h1 { margin-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+    .metric { border: 1px solid #ddd; border-radius: 8px; padding: 12px; background: #fafafa; }
+    .metric .label { font-size: 12px; color: #666; text-transform: uppercase; }
+    .metric .value { font-size: 28px; font-weight: 700; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+    th { background: #f0f0f0; }
+    .stub { color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Admin dashboard</h1>
+  <p class="stub">v1 metrics — DAU/WAU are stub counts from recent active events.</p>
+
+  <div class="grid">
+    <div class="metric"><div class="label">DAU</div><div class="value">{{ metrics.dau }}</div></div>
+    <div class="metric"><div class="label">WAU</div><div class="value">{{ metrics.wau }}</div></div>
+    <div class="metric"><div class="label">Swipes / session</div><div class="value">{{ metrics.swipes_per_session }}</div></div>
+    <div class="metric"><div class="label">Right-swipe rate</div><div class="value">{{ "%.1f"|format(metrics.right_swipe_rate * 100) }}%</div></div>
+    <div class="metric"><div class="label">Queue depth</div><div class="value">{{ metrics.queue_depth }}</div></div>
+    <div class="metric"><div class="label">Pro users</div><div class="value">{{ metrics.pro_users }}</div></div>
+    <div class="metric"><div class="label">Free users</div><div class="value">{{ metrics.free_users }}</div></div>
+    <div class="metric"><div class="label">Referrals (total)</div><div class="value">{{ metrics.referrals_total }}</div></div>
+    <div class="metric"><div class="label">Digests (24h)</div><div class="value">{{ metrics.digests_sent_24h }}</div></div>
+    <div class="metric"><div class="label">Digest open rate (24h)</div><div class="value">{{ "%.1f"|format(metrics.digest_open_rate_24h * 100) }}%</div></div>
+    <div class="metric"><div class="label">LLM calls (24h)</div><div class="value">{{ metrics.llm_calls_24h }}</div></div>
+  </div>
+
+  <h2>Source health</h2>
+  <table>
+    <thead><tr><th>Source</th><th>Jobs (24h)</th><th>Last fetch</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for row in metrics.source_health %}
+      <tr>
+        <td>{{ row.source_name }}</td>
+        <td>{{ row.jobs_last_24h }}</td>
+        <td>{{ row.last_fetched_at or "—" }}</td>
+        <td>{{ row.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4">No source data yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>API quota (JSearch / Adzuna / Remotive)</h2>
+  <table>
+    <thead><tr><th>Source</th><th>Used today</th><th>Daily limit</th><th>Utilization</th></tr></thead>
+    <tbody>
+      {% for q in metrics.quota %}
+      <tr>
+        <td>{{ q.source }}</td>
+        <td>{{ q.used }}</td>
+        <td>{{ q.limit }}</td>
+        <td>{{ "%.0f"|format((q.used / q.limit * 100) if q.limit else 0) }}%</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4">No quota data yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Event counts (recent window)</h2>
+  <table>
+    <thead><tr><th>Type</th><th>Count</th></tr></thead>
+    <tbody>
+      {% for event_type, count in metrics.event_counts.items() %}
+      <tr><td>{{ event_type }}</td><td>{{ count }}</td></tr>
+      {% else %}
+      <tr><td colspan="2">No events recorded.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

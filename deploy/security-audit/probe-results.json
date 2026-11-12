@@ -1,0 +1,247 @@
+{
+  "generated_at": "2026-08-28T23:46:27.959563Z",
+  "hosts": [
+    {
+      "hostname": "jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "auth.jbuschmann.com",
+      "http_code": "302",
+      "location": "https://auth.jbuschmann.com/admin/",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "yes"
+    },
+    {
+      "hostname": "mealie.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "monitoring.jbuschmann.com",
+      "http_code": "302",
+      "location": "/login",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "status.jbuschmann.com",
+      "http_code": "ERR",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "nextcloud.jbuschmann.com",
+      "http_code": "302",
+      "location": "http://nextcloud.jbuschmann.com/login",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "git.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "n8n.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "seerr.jbuschmann.com",
+      "http_code": "307",
+      "location": "/login",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "jellyfin.jbuschmann.com",
+      "http_code": "302",
+      "location": "web/",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "ollama.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "openui.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "logs.jbuschmann.com",
+      "http_code": "302",
+      "location": "/app/home",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "wrr-dev.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "wmsdemo.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "moveanchor.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "apianchor.jbuschmann.com",
+      "http_code": "404",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "openhands.jbuschmann.com",
+      "http_code": "302",
+      "location": "https://jacobbuschmann.cloudflareaccess.com/cdn-cgi/access/login/openhands.jbuschmann.com?kid=cf820c7f25efcf7404b2e031884aef825d79db28e115ae1ced09e82d37a16e1a&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjVjYzhjZGQ3NDM5ZGRmNjk3NmQ4NGJlNWNjYTg3YzE2YzE1NGZlNjViNWFkMzU5N2U5ODU4YmI3MjA5ZjUwOTgifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6ImNmODIwYzdmMjVlZmNmNzQwNGIyZTAzMTg4NGFlZjgyNWQ3OWRiMjhlMTE1YWUxY2VkMDllODJkMzdhMTZlMWEiLCJob3N0bmFtZSI6Im9wZW5oYW5kcy5qYnVzY2htYW5uLmNvbSIsInJlZGlyZWN0X3VybCI6Ii8iLCJzZXJ2aWNlX3Rva2VuX3N0YXR1cyI6ZmFsc2UsImlzX3dhcnAiOmZhbHNlLCJpc19nYXRld2F5IjpmYWxzZSwiZXhwIjoxNzg3OTYxMDgwLCJuYmYiOjE3ODc5NjA3ODAsImlhdCI6MTc4Nzk2MDc4MCwiYXV0aF9zdGF0dXMiOiJOT05FIiwibXRsc19hdXRoIjp7ImNlcnRfaXNzdWVyX2RuIjoiIiwiY2VydF9zZXJpYWwiOiIiLCJjZXJ0X2lzc3Vlcl9za2kiOiIiLCJjZXJ0X3ByZXNlbnRlZCI6ZmFsc2UsImNvbW1vbl9uYW1lIjoiIiwiYXV0aF9zdGF0dXMiOiJOT05FIn0sInJlYWxfY291bnRyeSI6IlVTIiwiYXBwX3Nlc3Npb25faGFzaCI6ImIwNzFmMGUzNDIxYTM0ZDFkOWFmMzYyNTFiMGY2NDI5ZTQzMDkzMGUyNzgyMWUwNDk4NjY5ZmUxYTliOThkNTYifQ.O7BU56AeZKHxwt4RotzUV4NvwoH9KiKaK84BtG9kThnXNMp_9JIlE1GuwJa6Uo2CssS_X5wauVLSA7w4TqvLR_E8nbit3bNdqmw3i5DnUz3hop-HlSRX3xVnJ91dByvVprCDBkFecsJo0oiQcGciyHaVDPQZejq_YeFcrXM-4hjFOeEVhNquRhPZjLyiuQ7xIVJwVdtlxyMGkXpJz6IGadSjy1sakkgc5EqyBzpxqCOC6i5rW3ixVaKHIhIrkSdgAY7SP_XbI41PFIeK3pux_0y27RUCudfS-HC2mKZlvaQJPH962JZTX5VH58vqFdvdmKsGHB1hmrMy_cBi3kPifQ&redirect_url=%2F",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "yes"
+    },
+    {
+      "hostname": "openhands-sandbox.jbuschmann.com",
+      "http_code": "404",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "aidm.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "budget.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "wrensrootandrise.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "jobs.jbuschmann.com",
+      "http_code": "405",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    },
+    {
+      "hostname": "vault.jbuschmann.com",
+      "http_code": "200",
+      "location": "",
+      "cf_mitigated": "",
+      "server": "cloudflare",
+      "redirects_to_auth": "no"
+    }
+  ],
+  "sensitive": [
+    {
+      "name": "ollama_tags",
+      "method": "GET",
+      "http_code": "200",
+      "flag": "CRITICAL"
+    },
+    {
+      "name": "ollama_generate",
+      "method": "POST",
+      "http_code": "200",
+      "flag": "CRITICAL"
+    },
+    {
+      "name": "jobs_auth_me",
+      "method": "GET",
+      "http_code": "401",
+      "flag": "ok"
+    },
+    {
+      "name": "jobs_deck",
+      "method": "GET",
+      "http_code": "401",
+      "flag": "ok"
+    },
+    {
+      "name": "jobs_admin",
+      "method": "GET",
+      "http_code": "401",
+      "flag": "ok"
+    },
+    {
+      "name": "jobs_events_log",
+      "method": "POST",
+      "http_code": "401",
+      "flag": "ok"
+    },
+    {
+      "name": "n8n_workflows",
+      "method": "GET",
+      "http_code": "401",
+      "flag": "ok"
+    },
+    {
+      "name": "forgejo_version",
+      "method": "GET",
+      "http_code": "403",
+      "flag": "ok"
+    }
+  ]
+}

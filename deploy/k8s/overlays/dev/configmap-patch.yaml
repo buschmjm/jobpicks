@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-platform-config
+data:
+  APP_ENV: "development"
+  APP_BASE_URL: "https://jobs-dev.jbuschmann.com"
+  APP_ALT_BASE_URLS: "http://localhost:5173"

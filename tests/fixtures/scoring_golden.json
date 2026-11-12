@@ -1,0 +1,105 @@
+{
+  "description": "Golden scoring cases for deterministic regression",
+  "cases": [
+    {
+      "name": "strong_semantic_and_skill_match",
+      "profile": {
+        "user_id": "u1",
+        "skills": ["python", "kubernetes", "terraform"],
+        "seniority_level": 2,
+        "target_salary": 140000,
+        "taste_embedding": [1.0, 0.0, 0.0],
+        "right_swipe_count": 25
+      },
+      "job": {
+        "job_id": "j1",
+        "title": "Senior Platform Engineer",
+        "company_id": "acme",
+        "company_name": "Acme Corp",
+        "embedding": [0.9, 0.1, 0.0],
+        "skills": ["python", "kubernetes", "go"],
+        "salary_min": 150000,
+        "salary_max": 170000,
+        "seniority_level": 2,
+        "remote_mode": "remote"
+      },
+      "expected_min_score": 0.55,
+      "expected_max_score": 0.95
+    },
+    {
+      "name": "below_target_comp_decays",
+      "profile": {
+        "user_id": "u1",
+        "skills": ["python"],
+        "seniority_level": 2,
+        "target_salary": 140000,
+        "taste_embedding": [1.0, 0.0],
+        "right_swipe_count": 25
+      },
+      "job": {
+        "job_id": "j2",
+        "title": "Engineer",
+        "company_id": "beta",
+        "company_name": "Beta Inc",
+        "embedding": [1.0, 0.0],
+        "skills": ["python"],
+        "salary_min": 70000,
+        "salary_max": 90000,
+        "seniority_level": 2,
+        "remote_mode": "remote"
+      },
+      "expected_min_score": 0.80,
+      "expected_max_score": 0.97
+    },
+    {
+      "name": "cold_start_boosts_skills",
+      "profile": {
+        "user_id": "u2",
+        "skills": ["python", "ansible"],
+        "seniority_level": 1,
+        "target_salary": 100000,
+        "taste_embedding": [0.0, 1.0],
+        "right_swipe_count": 0
+      },
+      "job": {
+        "job_id": "j3",
+        "title": "DevOps Engineer",
+        "company_id": "gamma",
+        "company_name": "Gamma LLC",
+        "embedding": [1.0, 0.0],
+        "skills": ["python", "ansible", "linux"],
+        "salary_min": 110000,
+        "salary_max": 130000,
+        "seniority_level": 1,
+        "remote_mode": "remote"
+      },
+      "expected_min_score": 0.45,
+      "expected_max_score": 0.85
+    },
+    {
+      "name": "hard_constraint_salary_fail_returns_none",
+      "profile": {
+        "user_id": "u3",
+        "skills": ["python"],
+        "seniority_level": 2,
+        "target_salary": 140000,
+        "right_swipe_count": 10
+      },
+      "job": {
+        "job_id": "j4",
+        "title": "Junior Engineer",
+        "company_id": "delta",
+        "company_name": "Delta Co",
+        "skills": ["python"],
+        "salary_min": 60000,
+        "salary_max": 80000,
+        "seniority_level": 0,
+        "remote_mode": "remote"
+      },
+      "constraints": {
+        "min_salary": 120000
+      },
+      "expect_none": true
+    }
+  ]
+}

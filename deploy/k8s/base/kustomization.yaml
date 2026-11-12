@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: jobs-platform
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - pvc.yaml
+  - api-deployment.yaml
+  - api-service.yaml
+  - servicemonitor.yaml
+  - worker-deployment.yaml
+  - cronjobs/
+
+commonLabels:
+  app.kubernetes.io/part-of: job-platform
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+  - name: job-platform
+    newName: job-platform
+    newTag: latest
+
+patches:
+  - target:
+      kind: CronJob
+    patch: |-
+      - op: add
+        path: /spec/jobTemplate/spec/template/spec/containers/0/envFrom/-
+        value:
+          secretRef:
+            name: job-platform-secrets

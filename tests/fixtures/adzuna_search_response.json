@@ -1,0 +1,53 @@
+{
+  "__CLASS__": "Adzuna::API::Response::JobSearchResults",
+  "count": 2,
+  "mean_salary": 145000,
+  "results": [
+    {
+      "__CLASS__": "Adzuna::API::Response::Job",
+      "id": "543210987",
+      "title": "Senior Platform Engineer",
+      "description": "Build and operate Kubernetes platforms. Remote-friendly team.",
+      "created": "2026-08-20T14:30:00Z",
+      "redirect_url": "https://www.adzuna.com/jobs/details/543210987",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "salary_min": 140000,
+      "salary_max": 170000,
+      "salary_currency": "USD",
+      "contract_time": "full_time",
+      "contract_type": "permanent",
+      "company": {
+        "__CLASS__": "Adzuna::API::Response::Company",
+        "display_name": "Acme Corp"
+      },
+      "location": {
+        "__CLASS__": "Adzuna::API::Response::Location",
+        "display_name": "San Francisco, California"
+      }
+    },
+    {
+      "__CLASS__": "Adzuna::API::Response::Job",
+      "id": "543210988",
+      "title": "Junior Help Desk Technician",
+      "description": "Onsite support role in Austin office.",
+      "created": "2026-06-01T09:00:00Z",
+      "redirect_url": "https://www.adzuna.com/jobs/details/543210988",
+      "latitude": 30.2672,
+      "longitude": -97.7431,
+      "salary_min": 45000,
+      "salary_max": 55000,
+      "salary_currency": "USD",
+      "contract_time": "full_time",
+      "contract_type": "permanent",
+      "company": {
+        "__CLASS__": "Adzuna::API::Response::Company",
+        "display_name": "SupportCo"
+      },
+      "location": {
+        "__CLASS__": "Adzuna::API::Response::Location",
+        "display_name": "Austin, Texas"
+      }
+    }
+  ]
+}

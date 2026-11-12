@@ -1,0 +1,39 @@
+name: release-mobile
+
+on:
+  push:
+    branches: [production]
+
+jobs:
+  android-release:
+    runs-on: android
+    if: false  # Enable after android/ is committed and Play secrets are configured.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build web assets
+        run: |
+          cd web && npm ci && npm run build
+          cd .. && npm run android:sync || ./scripts/build-mobile-web.sh
+
+      - name: Decode keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: echo "${ANDROID_KEYSTORE_BASE64}" | base64 -d > release.keystore
+
+      - name: Build signed AAB
+        working-directory: android
+        env:
+          KEYSTORE_PATH: ../release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: ./gradlew bundleRelease
+
+      - name: Upload to Play Store (internal track)
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.jbuschmann.jobpicks
+          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          track: internal

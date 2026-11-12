@@ -1,0 +1,31 @@
+{
+  "0-legal-notice": "Remotive API Legal Notice",
+  "job-count": 2,
+  "jobs": [
+    {
+      "id": 987654,
+      "url": "https://remotive.com/remote-jobs/software-dev/senior-devops-engineer-987654",
+      "title": "Senior DevOps Engineer",
+      "company_name": "CloudNative Inc",
+      "company_logo": "https://remotive.com/job/987654/logo",
+      "category": "Software Development",
+      "job_type": "full_time",
+      "publication_date": "2026-08-22T10:15:00",
+      "candidate_required_location": "USA",
+      "salary": "$130,000 - $160,000",
+      "description": "<p>Lead infrastructure automation with <strong>Kubernetes</strong> and Terraform.</p>"
+    },
+    {
+      "id": 987655,
+      "url": "https://remotive.com/remote-jobs/software-dev/junior-support-987655",
+      "title": "Junior Support Engineer",
+      "company_name": "HelpDesk LLC",
+      "category": "Software Development",
+      "job_type": "full_time",
+      "publication_date": "2026-05-01T08:00:00",
+      "candidate_required_location": "Worldwide",
+      "salary": "$40,000 - $50,000",
+      "description": "<p>Entry-level support role.</p>"
+    }
+  ]
+}

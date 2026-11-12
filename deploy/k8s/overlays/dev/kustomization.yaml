@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: jobs-platform-dev
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Namespace
+      name: jobs-platform
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: jobs-platform-dev
+      - op: add
+        path: /metadata/labels/app.kubernetes.io~1environment
+        value: dev
+  - target:
+      kind: ConfigMap
+      name: job-platform-config
+    path: configmap-patch.yaml
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent
+
+images:
+  - name: job-platform
+    newName: job-platform
+    newTag: dev

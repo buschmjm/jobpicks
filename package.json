@@ -1,0 +1,20 @@
+{
+  "name": "job-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "JobPicks — AI job discovery platform",
+  "scripts": {
+    "mobile:build:web": "bash scripts/build-mobile-web.sh",
+    "android:scaffold": "bash scripts/scaffold-android.sh",
+    "android:sync": "npm run mobile:build:web && npx cap sync android",
+    "android:open": "npx cap open android",
+    "icons:generate": "python3 scripts/generate-app-icons.py"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/cli": "^8.5.1"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.5.1"
+  }
+}
